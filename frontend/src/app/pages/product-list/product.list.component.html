@@ -1,0 +1,62 @@
+<h1 align="center" class="display-4 " style="background-color:#13bbee">Stock Report</h1>
+<a *ngIf="currentUser?.role == Role.Customer" style="color: inherit" routerLink="/seller/product/new"
+    class="float-right mb-3"><i class="fas fa-plus fa-2x">Add</i>
+</a>
+
+
+<table id="table" class="table text-center" style="width:100%;">
+    <thead>
+        <tr>
+            <th scope="col" style="color:blue ; font-size: 2rem;">Images</th>
+            <th scope="col" style="color:blue ; font-size: 2rem;">Product Id</th>
+            <th scope="col" style="color:blue ; font-size: 2rem;">Name</th>
+            <th scope="col" style="color:blue ; font-size: 2rem;">Category</th>
+            <th scope="col" style="color:blue ; font-size: 2rem;">Description</th>
+            <th scope="col" style="color:blue ; font-size: 2rem;">Price</th>
+            <th scope="col" style="color:blue ; font-size: 2rem;">Stock</th>
+            <th scope="col" style="color:blue ; font-size: 2rem;">Status</th>
+            <th scope="col" style="color:blue ; font-size: 2rem;">Action</th>
+            <!-- <th scopr="col" style="color:blue ; font-size: 2rem;">Mail</th> -->
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let productInfo of page?.content | filter:searchText">
+            <th class="align-middle" scope="row">
+                <img height="100px" src="{{productInfo.productIcon}}" alt="{{productInfo.productName}}">
+            </th>
+            <td class="align-middle" style="font-size: 1.5rem;">{{productInfo.productId}}</td>
+            <td class="align-middle" style="font-size: 1.5rem;">{{productInfo.productName}}</td>
+            <td class="align-middle" style="font-size: 1.5rem;">{{CategoryType[productInfo.categoryType]}}</td>
+            <td class="align-middle" style="font-size: 1.5rem;">{{productInfo.productDescription}}</td>
+            <td class="align-middle" style="font-size: 1.5rem;">{{productInfo.productPrice | currency}}</td>
+            <td class="align-middle" style="font-size: 1.5rem;">{{productInfo.productStock}}</td>
+            <td class="align-middle" style="font-size: 1.5rem;">{{ProductStatus[productInfo.productStatus]}}</td>
+            <td class="align-middle">
+                <button class="btn btn-primary" style="color: aliceblue;font-size: 1.5rem;"
+                    routerLink="/seller/product/{{productInfo.productId}}/edit">
+
+                    Edit
+                </button>
+                <button class="btn btn-primary" *ngIf="currentUser?.role == Role.Customer"
+                    style="color: aliceblue;font-size: 1.5rem;" (click)="remove(page.content, productInfo.productId)"
+                    routerLink="./">
+
+                    Remove
+                </button>
+            </td>
+            <!-- <td class="align-middle">
+                <button style="color: aliceblue;font-size: 1.5rem;" (click)=onSubmit()
+                    [disabled]="(productInfo.productStock >10)? true:false" class="btn btn-primary">email</button>
+            </td> -->
+
+    </tbody>
+</table>
+<div align="center">
+    <form action="/" method="post" enctype="multipart/form-data">
+        <input class="form-control" type="file" (change)="onChange($event)" style="width:25rem">
+    </form>
+    <button (click)="onUpload()" class="btn btn-success" style="margin: 1rem;">
+        Upload
+    </button>
+</div>

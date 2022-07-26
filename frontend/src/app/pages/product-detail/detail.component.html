@@ -1,0 +1,32 @@
+<div class="app">
+  <header>
+    <a href="">
+      <img src="{{productInfo?.productIcon}}">
+    </a>
+  </header>
+
+  <main>
+
+    <form name="form" #form='ngForm' (ngSubmit)="productInfo?.productStatus == 0 && addToCart()">
+      <div class="text-center" style="height:40rem">
+        <h1>{{productInfo?.productName}}</h1>
+        <p class="center" style="font-size:1.5rem;"> {{productInfo?.productDescription}}</p>
+        <br>
+        <label id="price" class="center">Price:{{productInfo?.productPrice}}</label>
+        <br>
+        <button *ngIf="currentUser && addedToWishlist" (click)="handleRemoveFromWishList(productInfo.productId)"
+          class="btn btn-primary btn-lg" style="align-self: center;">Remove from wishlist</button>
+        <br>
+        <button *ngIf="currentUser && !addedToWishlist" (click)="handleAddToWishList(productInfo.productId)"
+          class="btn btn-primary btn-lg" style="align-self: center;">Add to
+          wishlist</button>
+        <br>
+        <button type="submit" [disabled]="!form.form.valid" *ngIf="productInfo?.productStatus == 0; else offBlock"
+          class="btn btn-primary btn-lg" style="align-self: center;margin-top: 1rem;">Add to Cart
+        </button>
+        <br>
+        <ng-template #offBlock><a class="btn btn-secondary btn-lg disabled">Unavailable</a></ng-template>
+      </div>
+    </form>
+  </main>
+</div>

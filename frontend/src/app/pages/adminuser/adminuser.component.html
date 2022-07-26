@@ -1,0 +1,32 @@
+<h1 align="center" class="display-4 " style="background-color:#13bbee">Users</h1>
+
+
+
+<table id="table" class="table text-center" style="width:100%;">
+    <thead>
+        <tr>
+            <th scope="col" style="color:blue; font-size: 2rem;">Email</th>
+            <th scope="col" style="color:blue; font-size: 2rem;">Name</th>
+            <th scope="col" style="color:blue; font-size: 2rem;">Role</th>
+            <th scope="col" style="color:blue; font-size: 2rem;">Action</th>
+
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let user of page?.content| filter:searchText ">
+
+            <td class="align-middle" style="font-size: 1.5rem;">{{user.email}}</td>
+            <td class="align-middle" style="font-size: 1.5rem;">{{user.name}}</td>
+            <td class="align-middle" style="font-size: 1.5rem;">{{user.role}}</td>
+            <td class="align-middle">
+                <button *ngIf="user.role=='ROLE_CUSTOMER'" (click)=addAdmin(user.email) class="btn btn-primary"
+                    style="font-size: 1.5rem;">Add
+                    Admin</button>
+                <button *ngIf="user.role=='ROLE_MANAGER'" (click)=removeAdmin(user.email) class="btn btn-primary"
+                    style="font-size: 1.5rem;">Remove
+                    Admin</button>
+            </td>
+
+    </tbody>
+</table>

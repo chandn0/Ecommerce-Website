@@ -1,0 +1,93 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+    <a class="navbar-brand" [routerLink]="root" style="font-size: 2.5rem; color:black ">
+        Shop For Home
+    </a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+
+        <div class="navbar-nav" *ngIf="!currentUser || currentUser.role == Role.Customer">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false" style="font-size:2rem; color:blue ">
+                    Category
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" routerLink="/category/0" style="font-size:1.5rem; color:blue "> HOME
+                        APPLIANCES</a>
+                    <a class="dropdown-item" routerLink="/category/1"
+                        style="font-size:1.5rem; color:blue ">FURNITURE</a>
+                    <a class="dropdown-item" routerLink="/category/2" style="font-size:1.5rem; color:blue "> KITCHEN AND
+                        DINING
+                    </a>
+                    <a class="dropdown-item" routerLink="/category/3" style="font-size:1.5rem; color:blue "> HOME
+                        FURNISHING </a>
+                    <a class="dropdown-item" routerLink="/category/4" style="font-size:1.5rem; color:blue "> STORAGE
+                    </a>
+                    <a class="dropdown-item" routerLink="/category/5" style="font-size:1.5rem; color:blue "> HOME DECOR
+                    </a>
+                    <a class="dropdown-item" routerLink="/category/6" style="font-size:1.5rem; color:blue "> LIGHTING
+                    </a>
+                    <a class="dropdown-item" routerLink="/category/7" style="font-size:1.5rem; color:blue "> GARDEN AND
+                        OUTDOOR
+                    </a>
+                    <a class="dropdown-item" routerLink="/category/8" style="font-size:1.5rem; color:blue ">TODAY'S
+                        DEALS
+                    </a>
+
+                </div>
+            </li>
+        </div>
+
+        <div class="navbar-nav ml-auto">
+            <a class="nav-item nav-link " routerLink="/profile" style="font-size:2rem; color:blue ">
+                {{name}}
+            </a>
+            <a *ngIf="!currentUser || currentUser.role == Role.Customer" class="nav-item nav-link " routerLink="/cart"
+                style="font-size:2rem; color:blue ">
+                <!-- <i class="fas fa-shopping-cart"></i> -->
+                Cart
+
+            </a>
+
+            <div class="navbar-nav" *ngIf="currentUser && currentUser.role == Role.Manager">
+
+                <a class="nav-item nav-link" routerLink="/discount" style="font-size:2rem; color:blue ">Discount</a>
+                <a class="nav-item nav-link" (click)=getUsers() routerLink="/admin/user"
+                    style="font-size:2rem; color:blue ">Users</a>
+                <a class="nav-item nav-link" routerLink="/seller/product" style="font-size:2rem; color:blue ">Stocks</a>
+            </div>
+
+            <div class="navbar-nav" *ngIf="currentUser && currentUser.role == Role.Customer">
+                <a class="nav-item nav-link" routerLink="/wishlist" style="font-size:2rem; color:blue ">Wishlist</a>
+            </div>
+
+            <ng-container *ngIf="currentUser; else noUser">
+
+
+                <a class="nav-item nav-link " routerLink="/order" style="font-size:2rem; color:blue ">
+                    order
+
+                </a>
+
+                <a class="nav-item nav-link " (click)="logout()" routerLink="/login" [queryParams]="{logout: true}"
+                    style="font-size:2rem; color:blue ">
+                    Sign Out
+                </a>
+            </ng-container>
+            <ng-template #noUser>
+                <a class="nav-item nav-link " routerLink="/login" style="font-size:2rem; color:blue ">
+                    Sign In
+                </a>
+                <a class="nav-item nav-link " routerLink="/register" style="font-size:2rem; color:blue ">
+                    Sign Up
+                </a>
+            </ng-template>
+
+        </div>
+    </div>
+</nav>

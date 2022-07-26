@@ -1,0 +1,22 @@
+<div class="center" style="padding-left: 65rem;">
+  <form class="form-inline my-2 my-lg-0">
+    <input type="text" align="right" name="search" [(ngModel)]="searchText" placeholder="Search"
+      class="display-4 mb-5" />
+  </form>
+</div>
+
+<div class="row text-center">
+  <div *ngFor="let productInfo of page?.content | filter:searchText" class="col-lg-4">
+    <div class="card mb-4" style="width: 25rem;">
+      <div class="card" style="width: 25rem;border-color: black;padding: 4rem;border-radius: 20px;">
+        <img class="card-img-top" src="{{productInfo.productIcon}}" alt="{{productInfo.productName}}">
+        <div class="card-body">
+          <h5 class="card-title">{{productInfo.productName}}</h5>
+          <p class="card-text">{{productInfo.productPrice}}</p>
+          <a routerLink="/product/{{productInfo.productId}}" *ngIf="productInfo.productStatus == 0; else offBlock"
+            class="btn btn-primary btn-lg">Open</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

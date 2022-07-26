@@ -1,0 +1,7 @@
+#backgroundimage {
+    background-image: url(https://img.freepik.com/free-vector/hand-painted-watercolor-abstract-watercolor-background_23-2149005675.jpg?t=st=1658735342~exp=1658735942~hmac=d8cf0bc1779988bb69020ad6dedcb7d8e46851f590a10dc6136d22eb294b6f2b&w=1380);
+    height: 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}

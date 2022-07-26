@@ -1,0 +1,36 @@
+<h1 align="center" class="display-4 " style="background-color:#13bbee">Coupons</h1>
+
+
+
+
+<table id="table" class="table text-center" style="width:100%;">
+    <thead>
+        <tr>
+            <th scope="col" style="color:blue ; font-size: 2rem;">Code</th>
+            <th scope="col" style="color:blue ; font-size: 2rem;">Percentage</th>
+            <th scope="col" style="color:blue ; font-size: 2rem;">Action</th>
+
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let coupon of page?.content | filter:searchText">
+
+            <td class="align-middle" style="font-size: 2rem;">{{coupon.id}}</td>
+            <td class="align-middle" style="font-size: 2rem;">{{coupon.percentage}} % </td>
+            <td class="align-middle">
+                <button (click)=deleteCoupon(coupon.id) class="btn btn-danger">Delete</button>
+            </td>
+
+    </tbody>
+</table>
+<div align="center"><input [(ngModel)]="coupon" type="text" class="form-control form-control-lg" id="coupon"
+        style="width: 20rem;margin: 1rem;" name="coupon" placeholder="Enter coupon code">
+    <input [(ngModel)]="percentage" type="Integer" id="percentage" name="percentage" placeholder="Enter percentage">
+    <button (click)=addCoupon(coupon,percentage) align="right" class="btn btn-primary">Add Coupon</button>
+</div>
+
+<!-- <div align="center"><input [(ngModel)]="coupon" type="text" class="form-control form-control-lg" id="coupon"
+    style="width: 20rem;margin: 1rem;" name="coupon" placeholder="Enter coupon code">
+<button (click)=addCoupon(coupon) align="right" class="btn btn-primary">Add Coupon</button>
+</div> -->
