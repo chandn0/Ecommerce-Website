@@ -1,0 +1,11 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Launch ShopApplication",
+            "request": "launch",
+            "mainClass": "com.online.site.ShopApplication",
+            "projectName": "online-shop-api"
+        }
+    ]
+}

@@ -44,9 +44,7 @@
         </div>
 
         <div class="navbar-nav ml-auto">
-            <a class="nav-item nav-link " routerLink="/profile" style="font-size:2rem; color:blue ">
-                {{name}}
-            </a>
+
             <a *ngIf="!currentUser || currentUser.role == Role.Customer" class="nav-item nav-link " routerLink="/cart"
                 style="font-size:2rem; color:blue ">
                 <!-- <i class="fas fa-shopping-cart"></i> -->
@@ -73,6 +71,9 @@
                     order
 
                 </a>
+                <a class="nav-item nav-link " routerLink="/profile" style="font-size:2rem; color:blue ">
+                    {{name}}
+                </a>
 
                 <a class="nav-item nav-link " (click)="logout()" routerLink="/login" [queryParams]="{logout: true}"
                     style="font-size:2rem; color:blue ">
@@ -83,6 +84,7 @@
                 <a class="nav-item nav-link " routerLink="/login" style="font-size:2rem; color:blue ">
                     Sign In
                 </a>
+
                 <a class="nav-item nav-link " routerLink="/register" style="font-size:2rem; color:blue ">
                     Sign Up
                 </a>

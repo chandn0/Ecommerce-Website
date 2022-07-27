@@ -14,6 +14,12 @@
         <br>
         <label id="price" class="center">Price:{{productInfo?.productPrice}}</label>
         <br>
+        <label class="card-text">
+          <strong>Quantity: </strong>
+          <input [(ngModel)]=count (change)="validateCount()" type="number" name="count" required min="1"
+            [max]=productInfo?.productStock>
+        </label>
+        <br>
         <button *ngIf="currentUser && addedToWishlist" (click)="handleRemoveFromWishList(productInfo.productId)"
           class="btn btn-primary btn-lg" style="align-self: center;">Remove from wishlist</button>
         <br>

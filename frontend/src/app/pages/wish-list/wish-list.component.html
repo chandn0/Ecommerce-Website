@@ -16,7 +16,6 @@
     <tbody>
 
         <tr *ngFor="let productInOrder of page?.content">
-
             <td class="align-middle" scope="row">
                 <a routerLink="/product/{{productInOrder.product.productId}}"><img height="100px"
                         src="{{productInOrder.product.productIcon}}" alt="{{productInOrder.product.productName}}"></a>
